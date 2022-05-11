@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
- * @UniqueEntity("email")
+ * @UniqueEntity("emailAddress")
  */
 
 class Client
@@ -46,10 +46,7 @@ class Client
     #[ORM\Column(type: 'string', length: 255)]
     private $billingPhoneNumber;
 
-    /**
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     * @Assert\Email
-     */
+
 
     #[ORM\Column(type: 'string', length: 255)]
     public $emailAddress;
