@@ -51,7 +51,7 @@ class Client
     #[ORM\Column(type: 'string', length: 255)]
     public $emailAddress;
     /**
-     * @Assert\EqualTo(propertyPath="emailAddress", message="Your didn't type same passwords")
+     * @Assert\EqualTo(propertyPath="emailAddress", message="Your didn't type same email")
      */
     public $confirmationEmailAddress;
 
