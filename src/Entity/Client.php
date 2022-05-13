@@ -4,8 +4,17 @@ namespace App\Entity;
 
 use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
+#[ORM\Table(name: '`client`')]
+
+/**
+ * @ORM\Entity
+ * @UniqueEntity("emailAddress")
+ */
+
 class Client
 {
     #[ORM\Id]
@@ -37,8 +46,14 @@ class Client
     #[ORM\Column(type: 'string', length: 255)]
     private $billingPhoneNumber;
 
+
+
     #[ORM\Column(type: 'string', length: 255)]
-    private $emailAddress;
+    public $emailAddress;
+    /**
+     * @Assert\EqualTo(propertyPath="emailAddress", message="Your didn't type same email")
+     */
+    public $confirmationEmailAddress;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $deliveryFirstname;
@@ -179,6 +194,8 @@ class Client
 
         return $this;
     }
+
+    public $confirmation_emailAddress;
 
     public function getDeliveryFirstname(): ?string
     {
