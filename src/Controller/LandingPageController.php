@@ -35,7 +35,7 @@ class LandingPageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $order = new Order();
-            dd($form->getData());
+            /* dd($form->getData()); */
 
             $item = $itemRepository->find();
 
