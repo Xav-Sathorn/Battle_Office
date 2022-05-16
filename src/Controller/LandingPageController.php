@@ -32,13 +32,14 @@ class LandingPageController extends AbstractController
         //     ->add('client', RegistrationType::class)
         //     ->add('item', ItemType::class)
         //     ->getForm();
+        $items = $itemRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             dd($form->getData());
-            $order = new Order();
-            $item = $itemRepository->find;
 
-            $order->addItem($item);
+            $order = new Order();
+
+            // $order->addItem($item);
         
 
             $manager->persist($client);
@@ -49,6 +50,7 @@ class LandingPageController extends AbstractController
 
         return $this->render('landing_page/index_new.html.twig', [
             'form' => $form->createView(),
+            'items' => $items,
         ]);
     }
     /**
