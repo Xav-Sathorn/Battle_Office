@@ -12,7 +12,6 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
             ->add('eliteJolt')
             ->add('eliteDisruptor')
             ->add('eliteRapid');
