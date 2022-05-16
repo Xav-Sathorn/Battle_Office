@@ -31,7 +31,9 @@ class LandingPageController extends AbstractController
         //     ->getForm();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $client = $form->getData();
+
+            $order= new Order();
+
             $manager->persist($client);
             $manager->flush();
 
