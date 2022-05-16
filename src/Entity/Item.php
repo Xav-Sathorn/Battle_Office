@@ -16,8 +16,6 @@ class Item
     #[ORM\Column(type: 'boolean')]
     private $isAvailable;
 
-    #[ORM\Column(type: 'float')]
-    private $price;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $eliteJolt;
@@ -27,15 +25,6 @@ class Item
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $eliteRapid;
-
-    #[ORM\Column(type: 'float', nullable: true)]
-    private $priceJolt;
-
-    #[ORM\Column(type: 'float', nullable: true)]
-    private $priceDisruptor;
-
-    #[ORM\Column(type: 'float', nullable: true)]
-    private $priceRapid;
 
     public function getId(): ?int
     {
@@ -50,20 +39,6 @@ class Item
     public function setIsAvailable(bool $isAvailable): self
     {
         $this->isAvailable = $isAvailable;
-
-        return $this;
-    }
-
-
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -100,42 +75,6 @@ class Item
     public function setEliteRapid(?string $eliteRapid): self
     {
         $this->eliteRapid = $eliteRapid;
-
-        return $this;
-    }
-
-    public function getPriceJolt(): ?float
-    {
-        return $this->priceJolt;
-    }
-
-    public function setPriceJolt(?float $priceJolt): self
-    {
-        $this->priceJolt = $priceJolt;
-
-        return $this;
-    }
-
-    public function getPriceDisruptor(): ?float
-    {
-        return $this->priceDisruptor;
-    }
-
-    public function setPriceDisruptor(?float $priceDisruptor): self
-    {
-        $this->priceDisruptor = $priceDisruptor;
-
-        return $this;
-    }
-
-    public function getPriceRapid(): ?float
-    {
-        return $this->priceRapid;
-    }
-
-    public function setPriceRapid(?float $priceRapid): self
-    {
-        $this->priceRapid = $priceRapid;
 
         return $this;
     }
