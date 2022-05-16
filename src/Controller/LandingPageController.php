@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\Client;
+use App\Entity\Item;
 use App\Form\RegistrationType;
+use App\Repository\ItemRepository;
 use Symfony\Component\Form\Form;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +20,7 @@ class LandingPageController extends AbstractController
      * @Route("/", name="landing_page")
      * @throws \Exception
      */
-    public function index(Request $request, EntityManagerInterface $manager)
+    public function index(Request $request, EntityManagerInterface $manager, ItemRepository $itemRepository)
     {
         $client = new Client();
 
@@ -31,7 +34,12 @@ class LandingPageController extends AbstractController
         //     ->getForm();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $order = new Order();
+            dd($form->getData());
 
+            $item = $itemRepository->find();
+
+            $order->addItem($item);
 
             $manager->persist($client);
             $manager->flush();
