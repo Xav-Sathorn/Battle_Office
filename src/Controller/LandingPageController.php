@@ -24,14 +24,15 @@ class LandingPageController extends AbstractController
         $form = $this->createForm(RegistrationType::class, $client);
         $form->handleRequest($request);
 
-        
+
         // $form = $this->createFormBuilder($client)
         //     ->add('client', RegistrationType::class)
         //     ->add('item', ItemType::class)
         //     ->getForm();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $client = $form->getData();
+
+
             $manager->persist($client);
             $manager->flush();
 
