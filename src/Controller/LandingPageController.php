@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints\All;
 
 class LandingPageController extends AbstractController
 {
@@ -33,13 +34,14 @@ class LandingPageController extends AbstractController
         //     ->add('item', ItemType::class)
         //     ->getForm();
 
+        $items = $itemRepository->findAll();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $order = new Order();
             /* dd($form->getData()); */
 
-            $item = $itemRepository->find();
 
-            $order->addItem($item);
+            /* $order->addItem($item); */
 
             $manager->persist($client);
             $manager->flush();
@@ -49,6 +51,7 @@ class LandingPageController extends AbstractController
 
         return $this->render('landing_page/index_new.html.twig', [
             'form' => $form->createView(),
+            'items' => $items
         ]);
     }
     /**

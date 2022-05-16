@@ -101,4 +101,11 @@ class Item
 
         return $this;
     }
+
+    public function result()
+    {
+        $result = number_format($this->price / 100, 2);
+
+        return $result;
+    }
 }
