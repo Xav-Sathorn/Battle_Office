@@ -16,11 +16,15 @@ class Item
     #[ORM\Column(type: 'boolean')]
     private $isAvailable;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
 
-    #[ORM\Column(type: 'float')]
-    private $price;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $eliteJolt;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $eliteDisruptor;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $eliteRapid;
 
     public function getId(): ?int
     {
@@ -39,26 +43,38 @@ class Item
         return $this;
     }
 
-    public function getName(): ?string
+    public function getEliteJolt(): ?string
     {
-        return $this->name;
+        return $this->eliteJolt;
     }
 
-    public function setName(string $name): self
+    public function setEliteJolt(?string $eliteJolt): self
     {
-        $this->name = $name;
+        $this->eliteJolt = $eliteJolt;
 
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getEliteDisruptor(): ?string
     {
-        return $this->price;
+        return $this->eliteDisruptor;
     }
 
-    public function setPrice(float $price): self
+    public function setEliteDisruptor(?string $eliteDisruptor): self
     {
-        $this->price = $price;
+        $this->eliteDisruptor = $eliteDisruptor;
+
+        return $this;
+    }
+
+    public function getEliteRapid(): ?string
+    {
+        return $this->eliteRapid;
+    }
+
+    public function setEliteRapid(?string $eliteRapid): self
+    {
+        $this->eliteRapid = $eliteRapid;
 
         return $this;
     }
