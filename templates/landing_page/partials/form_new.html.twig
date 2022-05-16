@@ -15,60 +15,62 @@
 	<div class="card-content">
 		<span class="card-title color_product_primary center-align">Étape 2</span>
 		<p class="h6 center-align">Remplissez ce formulaire</p>
+
+		{{ form_start(form) }}
+
 		<div class="form-wrapper">
 			<div class="input-field">
-				<input type="text">
-				<label>Prénom</label>
+				{{ form_widget(form.firstname) }}
+				{{ form_label(form.firstname, 'Prénom') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Nom</label>
+				{{ form_widget(form.surname) }}
+				{{ form_label(form.surname, 'Nom') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Adresse</label>
+				{{ form_widget(form.billingAddress) }}
+				{{ form_label(form.billingAddress, 'Adresse') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Complément adr.</label>
+				{{ form_widget(form.billingAddressComplement) }}
+				{{ form_label(form.billingAddressComplement, 'Complément adr.') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Ville</label>
+				{{ form_widget(form.billingCity) }}
+				{{ form_label(form.billingCity, 'Ville') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Code postal</label>
+				{{ form_widget(form.billingPostCode) }}
+				{{ form_label(form.billingPostCode, 'Code postal') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<select>
-					<option>France</option>
-				</select>
-				<label>Pays</label>
+				{{ form_widget(form.billingCountry) }}
+				{{ form_label(form.billingCountry, 'Pays', { 'attr' : { 'style' : 'display:block'}}) }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Téléphone</label>
+				{{ form_widget(form.billingPhoneNumber) }}
+				{{ form_label(form.billingPhoneNumber, 'Téléphone') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Email</label>
+				{{ form_widget(form.emailAddress) }}
+				{{ form_label(form.emailAddress, 'Email') }}
 				<div class="form-error"></div>
 			</div>
 			<div class="input-field">
-				<input type="text">
-				<label>Confirmation email</label>
+				{{ form_widget(form.confirmationEmailAddress) }}
+				{{ form_label(form.confirmationEmailAddress, 'Confirmation email') }}
 				<div class="form-error"></div>
 			</div>
 		</div>
+
 	</div>
 	<ul class="collapsible">
 		<li>
@@ -76,51 +78,50 @@
 				<i class="material-icons">markunread_mailbox</i>Adresse de livraison différente ?</div>
 			<div class="collapsible-body">
 				<div class="input-field">
-					<input type="text">
-					<label>Prénom</label>
+					{{ form_widget(form.deliveryFirstname) }}
+					{{ form_label(form.deliveryFirstname, 'Prénom') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Nom</label>
+					{{ form_widget(form.deliverySurname) }}
+					{{ form_label(form.deliverySurname, 'Nom') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Adresse</label>
+					{{ form_widget(form.deliveryAddress) }}
+					{{ form_label(form.deliveryAddress, 'Adresse') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Complément adr.</label>
+					{{ form_widget(form.deliveryAddressComplement) }}
+					{{ form_label(form.deliveryAddressComplement, 'Complément adr') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Ville</label>
+					{{ form_widget(form.deliveryCity) }}
+					{{ form_label(form.deliveryCity, 'Ville') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Code postal</label>
+					{{ form_widget(form.deliveryPostCode) }}
+					{{ form_label(form.deliveryPostCode, 'Code postal') }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<select>
-						<option>France</option>
-					</select>
-					<label>Pays</label>
+					{{ form_widget(form.deliveryCountry) }}
+					{{ form_label(form.deliveryCountry, 'Pays', { 'attr' : { 'style' : 'display:block'}}) }}
 					<div class="form-error"></div>
 				</div>
 				<div class="input-field">
-					<input type="text">
-					<label>Téléphone</label>
+					{{ form_widget(form.deliveryPhoneNumber) }}
+					{{ form_label(form.deliveryPhoneNumber, 'Téléphone') }}
 					<div class="form-error"></div>
 				</div>
 			</div>
 		</li>
 	</ul>
 </div>
+
 {# Etape 3 #}
 <div class="card step_3">
 	<div class="card-content">
@@ -153,10 +154,10 @@
 								<a href="https://feelwellshop.com/fr/conditions-generales-de-ventes" target="_blank">conditions générales de vente</a>
 							</p>
 						</div>
-						{{ form_end(form) }}
 					</div>
 				</div>
 			</li>
 		</ul>
 	</div>
 </div>
+{{ form_end(form) }}
