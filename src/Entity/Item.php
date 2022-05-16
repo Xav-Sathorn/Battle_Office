@@ -18,18 +18,14 @@ class Item
     #[ORM\Column(type: 'boolean')]
     private $isAvailable;
 
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $eliteJolt;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $eliteDisruptor;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $eliteRapid;
-
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'items')]
     private $orders;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
+
+    #[ORM\Column(type: 'float')]
+    private $price;
 
     public function __construct()
     {
@@ -53,41 +49,6 @@ class Item
         return $this;
     }
 
-    public function getEliteJolt(): ?string
-    {
-        return $this->eliteJolt;
-    }
-
-    public function setEliteJolt(?string $eliteJolt): self
-    {
-        $this->eliteJolt = $eliteJolt;
-
-        return $this;
-    }
-
-    public function getEliteDisruptor(): ?string
-    {
-        return $this->eliteDisruptor;
-    }
-
-    public function setEliteDisruptor(?string $eliteDisruptor): self
-    {
-        $this->eliteDisruptor = $eliteDisruptor;
-
-        return $this;
-    }
-
-    public function getEliteRapid(): ?string
-    {
-        return $this->eliteRapid;
-    }
-
-    public function setEliteRapid(?string $eliteRapid): self
-    {
-        $this->eliteRapid = $eliteRapid;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Order>
@@ -112,6 +73,30 @@ class Item
         if ($this->orders->removeElement($order)) {
             $order->removeItem($this);
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
