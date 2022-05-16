@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Client;
+use App\Form\ItemType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -44,7 +45,8 @@ class RegistrationType extends AbstractType
                     'Luxembourg' => 'lx',
                 ]
             ])
-            ->add('deliveryPhoneNumber', TelType::class, ['required' => false]);
+            ->add('deliveryPhoneNumber', TelType::class, ['required' => false])
+            ->add('item', ItemType::class, ['mapped' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
