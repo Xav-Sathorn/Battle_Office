@@ -13,8 +13,9 @@ class ItemType extends AbstractType
     {
         $builder
 
-            ->add('name')
-            ->add('price');
+            ->add('eliteJolt')
+            ->add('eliteDisruptor')
+            ->add('eliteRapid');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
