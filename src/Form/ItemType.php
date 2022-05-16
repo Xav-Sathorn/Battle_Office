@@ -13,9 +13,9 @@ class ItemType extends AbstractType
     {
         $builder
 
-        ->add('isAvailable')
-        ->add('name')
-        ->add('price');
+        ->add('eliteJolt')
+        ->add('eliteDisruptor')
+        ->add('eliteRapid');
 
     }
 
