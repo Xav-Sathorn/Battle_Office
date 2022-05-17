@@ -16,7 +16,7 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $isPaymentAuthorized;
 
     #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'orders')]
