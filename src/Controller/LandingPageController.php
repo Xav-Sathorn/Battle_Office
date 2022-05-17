@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 class LandingPageController extends AbstractController
 {
   /**
@@ -91,4 +92,5 @@ class LandingPageController extends AbstractController
     ]);
     return new RedirectResponse($session->url);
   }
+
 }

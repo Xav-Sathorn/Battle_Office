@@ -16,6 +16,8 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $id;
 
+
+
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $isPaymentAuthorized;
 
@@ -23,7 +25,6 @@ class Order
     private $items;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
     private $client;
 
     public function __construct()
@@ -35,6 +36,8 @@ class Order
     {
         return $this->id;
     }
+
+
 
     public function isIsPaymentAuthorized(): ?bool
     {
