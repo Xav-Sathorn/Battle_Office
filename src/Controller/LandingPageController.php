@@ -37,15 +37,16 @@ class LandingPageController extends AbstractController
         $items = $itemRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $item = $itemRepository->find($request->request->get('product'));
             $order = new Order();
             /* dd($form->getData()); */
 
 
-            /* $order->addItem($item); */
-
+            $order->addItem($item);
+            $order->setClient($client);
             $manager->persist($client);
+            $manager->persist($order);
             $manager->flush();
-
             return $this->redirectToRoute('confirmation');
         }
 
