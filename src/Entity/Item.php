@@ -68,6 +68,12 @@ class Item
         return $result;
     }
 
+    public function fullPrice()
+    {
+        $fullPrice = number_format($this->fullPrice / 100, 2);
+
+        return $fullPrice;
+    }
     /**
      * @return Collection<int, Order>
      */
