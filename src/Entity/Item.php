@@ -61,6 +61,7 @@ class Item
         return $this;
     }
 
+
     public function result()
     {
         $result = number_format($this->price / 100, 2);
@@ -74,10 +75,12 @@ class Item
 
         return $fullPrice;
     }
+
     /**
      * @return Collection<int, Order>
      */
     public function getOrders(): Collection
+
     {
         return $this->orders;
     }
@@ -96,10 +99,20 @@ class Item
     {
         if ($this->orders->removeElement($order)) {
             $order->removeItem($this);
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->addItem($this);
         }
 
         return $this;
     }
+
 
     public function getName(): ?string
     {
@@ -121,9 +134,9 @@ class Item
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
         return $this;
     }
+
 
     public function getOffers(): ?string
     {
@@ -169,7 +182,6 @@ class Item
     public function setImage(string $image): self
     {
         $this->image = $image;
-
-        return $this;
     }
+          
 }
