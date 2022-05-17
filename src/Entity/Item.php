@@ -27,6 +27,18 @@ class Item
     #[ORM\Column(type: 'integer', nullable: true)]
     private $price;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $offers;
+
+    #[ORM\Column(type: 'integer')]
+    private $fullPrice;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $discount;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $image;
+
 
 
     public function __construct()
@@ -107,5 +119,60 @@ class Item
         $result = number_format($this->price / 100, 2);
 
         return $result;
+    }
+
+    public function getOffers(): ?string
+    {
+        return $this->offers;
+    }
+
+    public function setOffers(?string $offers): self
+    {
+        $this->offers = $offers;
+
+        return $this;
+    }
+
+    public function getFullPrice(): ?int
+    {
+        return $this->fullPrice;
+    }
+
+    public function setFullPrice(int $fullPrice): self
+    {
+        $this->fullPrice = $fullPrice;
+
+        return $this;
+    }
+
+    public function getDiscount(): ?string
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount(string $discount): self
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function original()
+    {
+        $original = number_format($this->fullPrice / 100, 2);
+
+        return $original;
     }
 }
