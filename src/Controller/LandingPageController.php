@@ -21,54 +21,41 @@ use Stripe\Stripe;
 class LandingPageController extends AbstractController
 {
 
-    /**
-     * @Route("/", name="landing_page")
-     * @throws \Exception
-     */
-    public function index(Request $request, EntityManagerInterface $manager, ItemRepository $itemRepository)
-    {
-        $client = new Client();
+  /**
+   * @Route("/", name="landing_page")
+   * @throws \Exception
+   */
+  public function index(Request $request, EntityManagerInterface $manager, ItemRepository $itemRepository)
+  {
+    $client = new Client();
 
-        $form = $this->createForm(RegistrationType::class, $client);
-        $form->handleRequest($request);
+    $form = $this->createForm(RegistrationType::class, $client);
+    $form->handleRequest($request);
 
 
-        // $form = $this->createFormBuilder($client)
-        //     ->add('client', RegistrationType::class)
-        //     ->add('item', ItemType::class)
-        //     ->getForm();
-        $items = $itemRepository->findAll();
+    // $form = $this->createFormBuilder($client)
+    //     ->add('client', RegistrationType::class)
+    //     ->add('item', ItemType::class)
+    //     ->getForm();
+    $items = $itemRepository->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    if ($form->isSubmitted() && $form->isValid()) {
 
-            $order = new Order();
+      $order = new Order();
 
-            $item = $itemRepository->find($request->request->get('product'));
-            $order->addItem($item);
-            $order->setClient($client);
-            $manager->persist($order);
-            $manager->persist($client);
-            $manager->flush();
+      $item = $itemRepository->find($request->request->get('product'));
+      $order->addItem($item);
+      $order->setClient($client);
+      $manager->persist($order);
+      $manager->persist($client);
+      $manager->flush();
 
-            return $this->redirectToRoute('confirmation');
-        }
-
-        return $this->render('landing_page/index_new.html.twig', [
-            'form' => $form->createView(),
-            'items' => $items,
-        ]);
-    }
-    /**
-     * @Route("/confirm", name="confirmation")
-     */
-    public function confirmation()
-    {
-        return $this->render('landing_page/confirmation.html.twig', []);
-
+      return $this->redirectToRoute('confirmation');
     }
 
     return $this->render('landing_page/index_new.html.twig', [
       'form' => $form->createView(),
+      'items' => $items,
     ]);
   }
   /**
@@ -77,7 +64,13 @@ class LandingPageController extends AbstractController
   public function confirmation()
   {
     return $this->render('landing_page/confirmation.html.twig', []);
+    return $this->render('landing_page/index_new.html.twig', [
+      'form' => $form->createView(),
+    ]);
   }
+
+
+
 
   public function strip()
   {
