@@ -15,7 +15,7 @@ class Item
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $isAvailable;
 
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'items')]
@@ -168,6 +168,7 @@ class Item
 
         return $this;
     }
+
 
     public function original()
     {
