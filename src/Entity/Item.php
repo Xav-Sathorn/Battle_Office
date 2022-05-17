@@ -21,6 +21,7 @@ class Item
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'items')]
     private $orders;
 
+
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
@@ -44,6 +45,7 @@ class Item
         $this->orders = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +62,7 @@ class Item
 
         return $this;
     }
+
 
 
     public function result()
@@ -184,4 +187,5 @@ class Item
         $this->image = $image;
     }
           
+
 }
