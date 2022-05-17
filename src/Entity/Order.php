@@ -16,14 +16,15 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
-    private $clientId;
-
     #[ORM\Column(type: 'boolean')]
     private $isPaymentAuthorized;
 
     #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'orders')]
     private $items;
+
+    #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $client;
 
     public function __construct()
     {
@@ -33,18 +34,6 @@ class Order
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getClientId(): ?int
-    {
-        return $this->clientId;
-    }
-
-    public function setClientId(int $clientId): self
-    {
-        $this->clientId = $clientId;
-
-        return $this;
     }
 
     public function isIsPaymentAuthorized(): ?bool
@@ -79,6 +68,18 @@ class Order
     public function removeItem(Item $item): self
     {
         $this->items->removeElement($item);
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }
