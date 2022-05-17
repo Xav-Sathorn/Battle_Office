@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\Client;
 use App\Entity\Order;
 use App\Entity\Item;
@@ -35,12 +36,12 @@ class LandingPageController extends AbstractController
         $items = $itemRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             dd($form->getData());
 
             $order = new Order();
 
             // $order->addItem($item);
-        
 
             $manager->persist($client);
             $manager->flush();
