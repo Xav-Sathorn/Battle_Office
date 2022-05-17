@@ -27,6 +27,18 @@ class Item
     #[ORM\Column(type: 'float')]
     private $price;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $offers;
+
+    #[ORM\Column(type: 'float')]
+    private $fullPrice;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $discount;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $image;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -103,6 +115,54 @@ class Item
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getOffers(): ?string
+    {
+        return $this->offers;
+    }
+
+    public function setOffers(?string $offers): self
+    {
+        $this->offers = $offers;
+
+        return $this;
+    }
+
+    public function getFullPrice(): ?float
+    {
+        return $this->fullPrice;
+    }
+
+    public function setFullPrice(float $fullPrice): self
+    {
+        $this->fullPrice = $fullPrice;
+
+        return $this;
+    }
+
+    public function getDiscount(): ?string
+    {
+        return $this->discount;
+    }
+
+    public function setDiscount(string $discount): self
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -14,7 +14,13 @@ class ItemType extends AbstractType
         $builder
             ->add('is_available')
             ->add('name')
-            ->add('price');
+            ->add('price')
+            ->add('offers')
+            ->add('full_price')
+            ->add('discount')
+            ->add('image')
+
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
