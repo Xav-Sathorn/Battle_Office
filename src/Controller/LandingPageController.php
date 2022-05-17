@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\Client;
+use App\Entity\Order;
 use App\Entity\Item;
 use App\Form\RegistrationType;
 use App\Repository\ItemRepository;
@@ -32,14 +33,15 @@ class LandingPageController extends AbstractController
         //     ->add('client', RegistrationType::class)
         //     ->add('item', ItemType::class)
         //     ->getForm();
+        $items = $itemRepository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            dd($form->getData());
+
             $order = new Order();
-            /* dd($form->getData()); */
 
-            $item = $itemRepository->find();
-
-            $order->addItem($item);
+            // $order->addItem($item);
 
             $manager->persist($client);
             $manager->flush();
@@ -49,6 +51,7 @@ class LandingPageController extends AbstractController
 
         return $this->render('landing_page/index_new.html.twig', [
             'form' => $form->createView(),
+            'items' => $items,
         ]);
     }
     /**

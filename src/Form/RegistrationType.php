@@ -45,8 +45,7 @@ class RegistrationType extends AbstractType
                     'Luxembourg' => 'lx',
                 ]
             ])
-            ->add('deliveryPhoneNumber', TelType::class, ['required' => false])
-            ->add('item', ItemType::class, ['mapped' => false]);
+            ->add('deliveryPhoneNumber', TelType::class, ['required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
