@@ -102,20 +102,9 @@ class Item
     {
         if ($this->orders->removeElement($order)) {
             $order->removeItem($this);
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Order $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->addItem($this);
         }
-
         return $this;
     }
-
 
     public function getName(): ?string
     {
@@ -185,6 +174,7 @@ class Item
     public function setImage(string $image): self
     {
         $this->image = $image;
+        return $this;
     }
           
 
