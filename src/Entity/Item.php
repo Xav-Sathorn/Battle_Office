@@ -15,22 +15,22 @@ class Item
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $isAvailable;
 
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'items')]
     private $orders;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $name;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $price;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $offers;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'integer')]
     private $fullPrice;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -38,6 +38,8 @@ class Item
 
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
+
+
 
     public function __construct()
     {
@@ -61,26 +63,10 @@ class Item
         return $this;
     }
 
-
-    public function result()
-    {
-        $result = number_format($this->price / 100, 2);
-
-        return $result;
-    }
-
-    public function fullPrice()
-    {
-        $fullPrice = number_format($this->fullPrice / 100, 2);
-
-        return $fullPrice;
-    }
-
     /**
      * @return Collection<int, Order>
      */
     public function getOrders(): Collection
-
     {
         return $this->orders;
     }
@@ -100,6 +86,7 @@ class Item
         if ($this->orders->removeElement($order)) {
             $order->removeItem($this);
         }
+
         return $this;
     }
 
@@ -108,24 +95,31 @@ class Item
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): self
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
+
         return $this;
     }
 
+    public function result()
+    {
+        $result = number_format($this->price / 100, 2);
+
+        return $result;
+    }
 
     public function getOffers(): ?string
     {
@@ -139,12 +133,12 @@ class Item
         return $this;
     }
 
-    public function getFullPrice(): ?float
+    public function getFullPrice(): ?int
     {
         return $this->fullPrice;
     }
 
-    public function setFullPrice(float $fullPrice): self
+    public function setFullPrice(int $fullPrice): self
     {
         $this->fullPrice = $fullPrice;
 
@@ -171,7 +165,15 @@ class Item
     public function setImage(string $image): self
     {
         $this->image = $image;
+
         return $this;
     }
-          
+
+
+    public function original()
+    {
+        $original = number_format($this->fullPrice / 100, 2);
+
+        return $original;
+    }
 }

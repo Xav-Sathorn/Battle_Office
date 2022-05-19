@@ -33,7 +33,7 @@ class Client
     #[ORM\Column(type: 'string', length: 255)]
     private $billingAddress;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255,  nullable: true)]
     private $billingAddressComplement;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -199,7 +199,7 @@ class Client
 
     public $confirmation_emailAddress;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Order::class)]
     private $orders;
 
     public function __construct()
