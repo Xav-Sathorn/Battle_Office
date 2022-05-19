@@ -45,7 +45,7 @@
 
 				{% for item in items %}
 					<label class="cure-radio">
-						<input name="product" value="{{item.id}}" type="radio">
+						<input name="product" value="{{item.id}}" type="radio" {% if  loop.index == 1 %} checked="checked"s {% endif %}>
 						<article>
 							<div class="card center-align">
 								<div class="row">
